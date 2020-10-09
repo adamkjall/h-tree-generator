@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H-Tree generator</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/background-effect.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <canvas class="canvas"></canvas>
+    <div class="m-intro">
+      <main class="main-layout">
+        <div class="main-content">
+          <h1>H-Tree generator</h1>
+          <button class="generate-tree-btn btn-small bg-1">
+            Generate random tree
+          </button>
+        </div>
+
+        <aside class="sidebar">
+          <div class="colors">
+            <div class="header">
+              <h2 class="title">Colors</h2>
+              <button class="random-color btn btn-round bg-2">Random</button>
+            </div>
+            <div class="color">
+              <label for="color1">Branch</label>
+              <input type="color" id="color1" name="color1" />
+            </div>
+            <div class="color">
+              <label for="color2">Leaf</label>
+              <input type="color" id="color2" name="color2" />
+            </div>
+            <div class="color glow-row disabled">
+              <div>
+                <label for="color3">Glow</label>
+                <input type="color" id="color3" name="color3" />
+              </div>
+              <div>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="toggle-slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="properties">
+            <h2 class="title">Properties</h2>
+            <div class="slidecontainer">
+              <div for="leafSize">Leaf size</div>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value="10"
+                class="slider"
+                id="leafSize"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Branch width</div>
+              <input
+                type="range"
+                min="1"
+                max="200"
+                value="20"
+                class="slider"
+                id="branchWidth"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Curve</div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="10"
+                class="slider"
+                id="curve"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Height</div>
+              <input
+                type="range"
+                min="20"
+                max="200"
+                value="120"
+                class="slider"
+                id="height"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Density</div>
+              <input
+                type="range"
+                min="6"
+                max="100"
+                value="15"
+                class="slider"
+                id="density"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Splits</div>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                value="2"
+                class="slider"
+                id="splits"
+              />
+            </div>
+            <div class="slidecontainer">
+              <div for="leafSize">Branch offset</div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="10"
+                class="slider"
+                id="branchOffset"
+              />
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
