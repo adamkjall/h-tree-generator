@@ -8,10 +8,11 @@ const leafSizeInput = document.getElementById("leafSize");
 const branchWidthInput = document.getElementById("branchWidth");
 const curveInput = document.getElementById("curve");
 const heightInput = document.getElementById("height");
-const densityInput = document.getElementById("density");
+const depthInput = document.getElementById("depth");
 const splitsInput = document.getElementById("splits");
 const branchOffsetInput = document.getElementById("branchOffset");
 const glowRadiusInput = document.getElementById("glowRadius");
+const branchScaleInput = document.getElementById("branchScale");
 
 const toggleGlowInput = document.querySelector(".switch .toggle-slider");
 
@@ -27,13 +28,14 @@ let hasGlow = false;
 
 let leafSize = +leafSizeInput.value || 10;
 let branchWidth = +branchWidthInput.value || 10;
+let branchOffset = +branchOffsetInput.value || 10;
+let branchScale = +branchScaleInput.value / 100 || 0.6;
 let angle = 0;
 let len = +heightInput.value || 120;
-let density = +densityInput.value || 15;
+let depth = +depthInput.value || 15;
 let splits = +splitsInput.value || 2;
 let curve = +curveInput.value || 10;
-let branchOffset = +branchOffsetInput || 10;
-let glowRadius = +glowRadiusInput || 5;
+let glowRadius = +glowRadiusInput.value || 5;
 
 color1Input.value = color1;
 color2Input.value = color2;
@@ -60,7 +62,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   ctx.lineTo(0, -len);
   ctx.stroke();
 
-  if (Number(len) < Number(density)) {
+  if (Number(len) < Number(depth)) {
     ctx.beginPath();
     ctx.arc(0, -len, leafSize, 0, Math.PI / 2);
     ctx.fill();
@@ -68,7 +70,6 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
     return;
   }
 
-  //   setTimeout(() => {
   const offset = Math.random() * 10 + branchOffset;
   const angle1 = angle - 2 * offset;
   const angle2 = angle - offset;
@@ -78,35 +79,34 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
 
   switch (splits) {
     case 1:
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
       break;
     case 2:
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
       break;
     case 3:
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
       break;
     case 4:
-      drawTree(0, -len, len * 0.75, angle1, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle1, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
       break;
     case 5:
-      drawTree(0, -len, len * 0.75, angle1, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * 0.6);
-      drawTree(0, -len, len * 0.75, angle5, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle1, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.75, angle5, branchWidth * branchScale);
       break;
     default:
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * 0.6);
+      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
   }
   ctx.restore();
-  //   }, 0);
 }
 
 function generateTree() {
@@ -147,7 +147,7 @@ function setRandomColors() {
 generateTree();
 
 /** LISTENERS */
-generateButton.addEventListener("click", generateTree);
+generateButton.addEventListener("click", generateRandomTree);
 toggleGlowInput.addEventListener("click", () => {
   hasGlow = !hasGlow;
   generateTree();
@@ -185,8 +185,8 @@ heightInput.addEventListener("change", (e) => {
   len = +e.target.value;
   generateTree();
 });
-densityInput.addEventListener("change", (e) => {
-  density = +e.target.value;
+depthInput.addEventListener("change", (e) => {
+  depth = +e.target.value;
   generateTree();
 });
 splitsInput.addEventListener("change", (e) => {
@@ -199,5 +199,9 @@ branchOffsetInput.addEventListener("change", (e) => {
 });
 glowRadiusInput.addEventListener("change", (e) => {
   glowRadius = +e.target.value;
+  generateTree();
+});
+branchScaleInput.addEventListener("change", (e) => {
+  branchScale = +e.target.value / 100;
   generateTree();
 });
