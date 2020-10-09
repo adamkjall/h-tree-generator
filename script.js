@@ -24,7 +24,7 @@ const ctx = canvas.getContext("2d");
 let color1 = randomHexColor();
 let color2 = randomHexColor();
 let color3 = randomHexColor();
-let hasGlow = false;
+let hasGlow = true;
 
 let leafSize = +leafSizeInput.value || 10;
 let branchWidth = +branchWidthInput.value || 10;
@@ -41,7 +41,7 @@ color1Input.value = color1;
 color2Input.value = color2;
 color3Input.value = color3;
 
-function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
+function drawTree(startX, startY, len, angle, branchWidth) {
   ctx.beginPath();
   ctx.save();
   ctx.strokeStyle = color1;
@@ -114,7 +114,7 @@ function generateTree() {
   const startX = canvas.width / 2;
   const startY = canvas.height * 0.85;
 
-  drawTree(startX, startY, len, angle, branchWidth, color1, color2);
+  drawTree(startX, startY, len, angle, branchWidth);
 }
 
 function generateRandomTree() {
@@ -123,8 +123,22 @@ function generateRandomTree() {
   const startY = canvas.height * 0.85;
 
   setRandomColors();
+  leafSize = Math.random() * 30 + 1;
+  leafSizeInput.value = leafSize;
+  branchWidth = Math.random() * 50 + 1;
+  branchWidthInput.value = branchWidth;
+  branchOffset = Math.random() * 50;
+  branchOffsetInput.value = branchOffset;
+  branchScale = Math.random();
+  branchScaleInput.value = branchScale;
+  curve = Math.random() * 50;
+  curveInput.value = curve;
+  len = Math.random() * 100 + 100;
+  heightInput.value = len;
+  depth = Math.random() * 50 + 6;
+  depthInput.value = depth;
 
-  drawTree(startX, startY, len, angle, branchWidth, color1, color2);
+  drawTree(startX, startY, len, angle, branchWidth);
 }
 
 function randomHexColor() {
