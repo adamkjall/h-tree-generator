@@ -11,6 +11,7 @@ const heightInput = document.getElementById("height");
 const densityInput = document.getElementById("density");
 const splitsInput = document.getElementById("splits");
 const branchOffsetInput = document.getElementById("branchOffset");
+const glowRadiusInput = document.getElementById("glowRadius");
 
 const toggleGlowInput = document.querySelector(".switch .toggle-slider");
 
@@ -32,6 +33,7 @@ let density = +densityInput.value || 15;
 let splits = +splitsInput.value || 2;
 let curve = +curveInput.value || 10;
 let branchOffset = +branchOffsetInput || 10;
+let glowRadius = +glowRadiusInput || 5;
 
 color1Input.value = color1;
 color2Input.value = color2;
@@ -43,7 +45,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   ctx.strokeStyle = color1;
   ctx.fillStyle = color2;
   if (hasGlow) {
-    ctx.shadowBlur = 10;
+    ctx.shadowBlur = glowRadius;
     ctx.shadowColor = color3;
   }
   ctx.lineWidth = branchWidth;
@@ -120,6 +122,8 @@ function generateRandomTree() {
   const startX = canvas.width / 2;
   const startY = canvas.height * 0.85;
 
+  setRandomColors();
+
   drawTree(startX, startY, len, angle, branchWidth, color1, color2);
 }
 
@@ -191,5 +195,9 @@ splitsInput.addEventListener("change", (e) => {
 });
 branchOffsetInput.addEventListener("change", (e) => {
   branchOffset = +e.target.value;
+  generateTree();
+});
+glowRadiusInput.addEventListener("change", (e) => {
+  glowRadius = +e.target.value;
   generateTree();
 });

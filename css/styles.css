@@ -13,10 +13,11 @@ body {
 canvas {
   position: absolute;
   /* background: white; */
-  /* z-index: 0; */
+  z-index: 1;
 }
 
 h1 {
+  font-family: monospace;
   font-size: 64px;
   background: -webkit-linear-gradient(
     180deg,
@@ -25,6 +26,8 @@ h1 {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 42px;
+  text-transform: uppercase;
 }
 
 .main-layout {
@@ -49,8 +52,9 @@ h1 {
   top: 15%;
   width: 220px;
   padding-top: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(32, 32, 32, 0.65);
   padding: 2rem;
+  z-index: 2;
 }
 
 .title {

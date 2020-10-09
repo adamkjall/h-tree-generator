@@ -41,7 +41,7 @@ body {
 }
 
 .m-intro {
-  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: rgba(0, 0, 0, 0.65);
   text-align: center;
   display: grid;
   justify-items: center;
