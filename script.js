@@ -76,35 +76,36 @@ function drawTree(startX, startY, len, angle, branchWidth) {
   const angle3 = angle;
   const angle4 = angle + offset;
   const angle5 = angle + 2 * offset;
+  const lenScale = 0.8;
 
   switch (splits) {
     case 1:
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle3, branchWidth * branchScale);
       break;
     case 2:
-      drawTree(0, -len, len * 0.82, angle2, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.82, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle4, branchWidth * branchScale);
       break;
     case 3:
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle4, branchWidth * branchScale);
       break;
     case 4:
-      drawTree(0, -len, len * 0.75, angle1, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle1, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle4, branchWidth * branchScale);
       break;
     case 5:
-      drawTree(0, -len, len * 0.75, angle1, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle5, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle1, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle5, branchWidth * branchScale);
       break;
     default:
-      drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
+      drawTree(0, -len, len * lenScale, angle3, branchWidth * branchScale);
   }
   ctx.restore();
 }
