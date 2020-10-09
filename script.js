@@ -82,8 +82,8 @@ function drawTree(startX, startY, len, angle, branchWidth) {
       drawTree(0, -len, len * 0.75, angle3, branchWidth * branchScale);
       break;
     case 2:
-      drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
-      drawTree(0, -len, len * 0.75, angle4, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.82, angle2, branchWidth * branchScale);
+      drawTree(0, -len, len * 0.82, angle4, branchWidth * branchScale);
       break;
     case 3:
       drawTree(0, -len, len * 0.75, angle2, branchWidth * branchScale);
